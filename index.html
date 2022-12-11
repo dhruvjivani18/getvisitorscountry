@@ -5,7 +5,9 @@
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 200) {
-        
+        var country_code = this.responseText.replace(/(\r\n|\n|\r)/gm,"").split('loc=');
+        country_code = country_code[1].split('tls=');
+        country_code = country_code[0];
         document.getElementById("countrycode-container").innerHTML = country_code;
       }
     };
